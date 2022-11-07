@@ -5,23 +5,22 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.Set;
 
 @Entity
-@Table(name = "ProgrammingLanguage")
+@Table(name = "ProgrammingTechnology")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProgrammingLanguage {
+public class ProgrammingTechnology {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
 
-    @Column(name = "programingName")
-    private String programingName;
+    @Column(name = "name")
+    private String name;
 
-    @OneToMany(mappedBy = "programmingLanguage")
-    Set<ProgrammingTechnology> programmingTechnologies;
-
+    @ManyToOne
+    @JoinColumn(name = "programming_language_id")
+    private ProgrammingLanguage programmingLanguage;
 }
