@@ -51,11 +51,12 @@ public class ProgrammingLanguageManager implements ProgrammingLanguageService {
         List<ProgrammingLanguage> languages = programmingLanguageRepository.findAll();
         for (ProgrammingLanguage language : languages) {
             if (createProgrammingLanguageRequest.getProgramingName().equals(language.getProgramingName())) {
-                throw new RuntimeException("Programlama Dili Boş Geçilemez");
+                throw new RuntimeException("Programlama Dili Mevcut");
             }
         }
         if (createProgrammingLanguageRequest.getProgramingName().equals("")) {
-            throw new RuntimeException("Programlama Dili Mevcut");
+            throw new RuntimeException("Programlama Dili Boş Geçilemez");
+
         }
 
         ProgrammingLanguage programmingLanguage = new ProgrammingLanguage();
